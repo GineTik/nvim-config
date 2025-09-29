@@ -56,6 +56,59 @@ return {
     end,
   },
 
+  -- Better UI for vim.ui interfaces (input, select)
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {
+      input = {
+        enabled = true,
+        default_prompt = "Input: ",
+        title_pos = "left",
+        border = "rounded",
+        relative = "cursor",
+      },
+      select = {
+        enabled = true,
+        backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
+        telescope = require("telescope.themes").get_dropdown({
+          winblend = 10,
+          layout_config = {
+            width = 0.8,
+            height = 0.9,
+          },
+        }),
+      },
+    },
+  },
+
+  -- Telescope UI Select for better selection dialogs
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    event = "VeryLazy",
+    config = function()
+      local actions = require("telescope.actions")
+      require("telescope").setup({
+        defaults = {
+          mappings = {
+            i = {
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-j>"] = actions.move_selection_next,
+            }
+          }
+        },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+            }
+          }
+        }
+      })
+      require("telescope").load_extension("ui-select")
+    end,
+  },
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
