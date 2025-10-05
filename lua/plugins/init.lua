@@ -13,6 +13,14 @@ return {
     end,
   },
 
+  -- Custom completion mappings
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      return require "configs.cmp"
+    end,
+  },
+
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
@@ -46,6 +54,21 @@ return {
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
+
+  -- Auto close and rename HTML/JSX/TSX tags
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = true,
+        },
+      })
+    end,
+  },
 
   -- Custom nvim-tree config with h/l mappings
   {
