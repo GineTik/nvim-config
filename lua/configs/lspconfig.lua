@@ -34,13 +34,13 @@ if vim.lsp.config then
         },
       },
     },
-    filetypes = { 
-      "javascript", 
-      "javascriptreact", 
-      "typescript", 
-      "typescriptreact", 
-      "tsx", 
-      "jsx" 
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "tsx",
+      "jsx"
     },
     -- Higher priority for TypeScript features
     on_attach = function(client, bufnr)
@@ -92,7 +92,7 @@ if vim.lsp.config then
       "css",
       "scss",
       "javascript",
-      "javascriptreact", 
+      "javascriptreact",
       "typescript",
       "typescriptreact",
       "tsx",
@@ -121,4 +121,4 @@ if vim.lsp.config then
   })
 end
 
--- read :h vim.lsp.config for changing options of lsp servers 
+-- read :h vim.lsp.config for changing options of lsp servers
